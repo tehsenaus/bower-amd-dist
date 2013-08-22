@@ -34,7 +34,7 @@
             defined['./' + name] = factory.apply(this, deps);
         });
 
-        root.subSync = defined['./{{ packageName }}'];
+        root['{{ globalName }}'] = defined['./{{ packageName }}'];
     }
 }(this, function (define) {
     
