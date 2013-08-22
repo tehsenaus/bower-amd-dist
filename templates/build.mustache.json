@@ -1,0 +1,21 @@
+{
+    "baseUrl": "./",
+    "paths": {
+        "{{ packageName }}": "{{ main }}",
+        {{# deps }}
+        "{{ name }}": "{{ &path }}"
+        {{/ deps }}
+    },
+    "include": ["{{ packageName }}"],
+    "exclude": [
+    {{# deps }}
+        "{{ name }}"
+    {{/ deps }}
+    ],
+    "out": "{{ &dist }}",
+    "wrap": {
+        "startFile": "build/start.wrap.js",
+        "endFile": "build/end.wrap.js"
+    },
+    "optimize": "none"
+}

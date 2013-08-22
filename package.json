@@ -1,0 +1,27 @@
+{
+  "name": "bower-amd-dist",
+  "version": "0.1.1",
+  "description": "Distrubute AMD-based libraries as single file Bower components",
+  "main": "./bin/bower-amd-dist",
+  "bin": {
+    "bower-amd-dist": "./bin/bower-amd-dist"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tehsenaus/bower-amd-dist.git"
+  },
+  "author": "Sean Micklethwaite",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/tehsenaus/bower-amd-dist/issues"
+  },
+  "dependencies": {
+    "requirejs": "~2.1.8",
+    "node-fs": "~0.1.7",
+    "mustache": "~0.7.2",
+    "bower": "~1.2.2"
+  }
+}
