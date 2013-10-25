@@ -1,6 +1,6 @@
 {
   "name": "bower-amd-dist",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Distrubute AMD-based libraries as single file Bower components",
   "main": "./bin/bower-amd-dist",
   "bin": {
