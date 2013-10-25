@@ -1,16 +1,17 @@
 {
     "baseUrl": "./",
     "paths": {
-        "{{ packageName }}": "{{ main }}",
         {{# deps }}
-        "{{ name }}": "{{ &path }}"
+        "{{ name }}": "{{ &path }}",
         {{/ deps }}
+        "{{ packageName }}": "{{ main }}"
     },
     "include": ["{{ packageName }}"],
     "exclude": [
     {{# deps }}
-        "{{ name }}"
+        "{{ name }}",
     {{/ deps }}
+        ""
     ],
     "out": "{{ &dist }}",
     "wrap": {
