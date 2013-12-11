@@ -5,14 +5,21 @@
     } else {
         //Browser globals case.
         var name = '{{ packageName }}',
-            defined = {};
+            defined = {},
+            node = typeof require === 'function';
 
-        {{# deps }}
-        if ( !root['{{ global }}'] ) {
-            throw new Error(name + ": Missing dependency: {{ name }}");
-        }
-        defined['{{ name }}'] = root['{{ global }}'];
-        {{/ deps }}
+        if ( node ) {
+            {{# deps }}
+            defined['{{ name }}'] = require('{{ name }}');
+            {{/ deps }}
+        } else {
+            {{# deps }}
+            if ( !root['{{ global }}'] ) {
+                throw new Error(name + ": Missing dependency: {{ name }}");
+            }
+            defined['{{ name }}'] = root['{{ global }}'];
+            {{/ deps }}
+        };
 
         factory(function (name, deps, factory) {
             var basePath = name.slice(0, name.lastIndexOf('/') + 1);
@@ -34,7 +41,12 @@
             defined['./' + name] = factory.apply(this, deps);
         });
 
-        root['{{ globalName }}'] = defined['./{{ packageName }}'];
+        var pkg = defined['./{{ packageName }}'];
+        if ( node ) {
+            module.exports = pkg;
+        } else {
+            root['{{ globalName }}'] = pkg;
+        }
     }
 }(this, function (define) {
     
